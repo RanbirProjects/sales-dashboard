@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sales Data Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">₹</div>
+      <div>
+        <h1>Sales Data Dashboard</h1>
+        <p>Java Full Stack · Spring Boot · JPA · Chart.js</p>
+      </div>
+    </div>
+    <div class="actions">
+      <span class="live"><i></i> Live data</span>
+      <a id="exportBtn" class="btn ghost" href="/api/sales/export">⬇ Export CSV</a>
+      <button id="addBtn" class="btn primary">＋ Add sale</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="filters card">
+      <label>Region
+        <select id="f-region"><option value="">All regions</option></select>
+      </label>
+      <label>Category
+        <select id="f-category"><option value="">All categories</option></select>
+      </label>
+      <label>From
+        <input type="date" id="f-from" />
+      </label>
+      <label>To
+        <input type="date" id="f-to" />
+      </label>
+      <button id="resetBtn" class="btn ghost">Reset</button>
+    </section>
+
+    <section class="kpis">
+      <article class="card kpi" style="--i:0"><span class="kpi-icon">💰</span><div><small>Total revenue</small><strong id="k-revenue">–</strong></div></article>
+      <article class="card kpi" style="--i:1"><span class="kpi-icon">🧾</span><div><small>Orders</small><strong id="k-orders">–</strong></div></article>
+      <article class="card kpi" style="--i:2"><span class="kpi-icon">📦</span><div><small>Units sold</small><strong id="k-units">–</strong></div></article>
+      <article class="card kpi" style="--i:3"><span class="kpi-icon">📈</span><div><small>Avg. order value</small><strong id="k-avg">–</strong></div></article>
+    </section>
+
+    <section class="charts">
+      <article class="card chart wide" style="--i:4"><h3>Monthly revenue</h3><div class="canvas-wrap"><canvas id="c-monthly"></canvas></div></article>
+      <article class="card chart" style="--i:5"><h3>Revenue by category</h3><div class="canvas-wrap"><canvas id="c-category"></canvas></div></article>
+      <article class="card chart" style="--i:6"><h3>Revenue by region</h3><div class="canvas-wrap"><canvas id="c-region"></canvas></div></article>
+      <article class="card chart" style="--i:7"><h3>Top 5 products</h3><div class="canvas-wrap"><canvas id="c-products"></canvas></div></article>
+      <article class="card chart" style="--i:8"><h3>Top 5 salespeople</h3><div class="canvas-wrap"><canvas id="c-people"></canvas></div></article>
+    </section>
+
+    <section class="card table-card" style="--i:9">
+      <div class="table-head">
+        <h3>Sales records <small id="rowCount"></small></h3>
+        <input id="search" type="search" placeholder="Search product, person…" />
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Product</th><th>Category</th><th>Region</th><th>Salesperson</th><th class="r">Qty</th><th class="r">Unit price</th><th class="r">Total</th><th></th></tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Add / edit modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <form id="saleForm" class="modal-card" novalidate>
+      <h2 id="modalTitle">Add sale</h2>
+      <div class="grid">
+        <label>Order date<input type="date" id="m-date" required /></label>
+        <label>Product<input id="m-product" list="dl-products" required /></label>
+        <label>Category<input id="m-category" list="dl-categories" required /></label>
+        <label>Region<input id="m-region" list="dl-regions" required /></label>
+        <label>Salesperson<input id="m-person" list="dl-people" required /></label>
+        <label>Quantity<input type="number" id="m-qty" min="1" value="1" required /></label>
+        <label class="full">Unit price (₹)<input type="number" id="m-price" min="0.01" step="0.01" required /></label>
+      </div>
+      <p class="preview">Total: <strong id="m-total">₹0</strong></p>
+      <p id="formError" class="error"></p>
+      <div class="modal-actions">
+        <button type="button" id="cancelBtn" class="btn ghost">Cancel</button>
+        <button type="submit" class="btn primary">Save</button>
+      </div>
+      <datalist id="dl-products"></datalist>
+      <datalist id="dl-categories"></datalist>
+      <datalist id="dl-regions"></datalist>
+      <datalist id="dl-people"></datalist>
+    </form>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="js/chart.umd.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

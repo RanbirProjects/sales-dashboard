@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run Sales Dashboard (H2)",
+      "request": "launch",
+      "mainClass": "com.ranbir.salesdashboard.SalesDashboardApplication",
+      "projectName": "sales-dashboard"
+    },
+    {
+      "type": "java",
+      "name": "Run Sales Dashboard (MySQL)",
+      "request": "launch",
+      "mainClass": "com.ranbir.salesdashboard.SalesDashboardApplication",
+      "projectName": "sales-dashboard",
+      "args": "--spring.profiles.active=mysql"
+    }
+  ]
+}
