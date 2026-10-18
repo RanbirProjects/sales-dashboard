@@ -2,6 +2,26 @@
 
 Spring Boot + JPA/Hibernate + H2 / MySQL + vanilla JS with animated Chart.js dashboards.
 
+<p align="center">
+ <img width="2880" height="1624" alt="7B0D6738-D244-406D-8577-2BFA09C67541" src="https://github.com/user-attachments/assets/241372a6-6335-42f9-a9e3-5827ac143625" />
+<img width="2880" height="1624" alt="81B0DB6C-B7DB-47E7-A8A4-C67344FC095B" src="https://github.com/user-attachments/assets/1cb4d4b6-a74d-4f42-bac0-559ae76a2cf5" />
+
+</p>
+
+## 📸 Screenshots
+
+<p align="center">
+  ![Uploading 7B0D6738-D244-406D-8577-2BFA09C67541.jpeg…]()
+
+  <br/><sub>Revenue by category and region, top products and top salespeople</sub>
+</p>
+
+<p align="center">
+  <img src="<img width="2880" height="1624" alt="FBBDF4E3-D0DA-411C-AA3E-A5CD0D932547" src="https://github.com/user-attachments/assets/a622fa2c-7287-4cd8-81cd-0383a280fa7a" />
+" alt="Sales records table with edit and delete actions" width="100%"/>
+  <br/><sub>Sales records — search, edit, delete and export to CSV</sub>
+</p>
+
 ## Features
 - KPI cards with count-up animation (revenue, orders, units, average order value)
 - Animated charts: monthly revenue, revenue by category / region, top products, top salespeople
@@ -11,7 +31,7 @@ Spring Boot + JPA/Hibernate + H2 / MySQL + vanilla JS with animated Chart.js das
 - 400 demo sales are seeded automatically on first run
 
 ## Run in VS Code
-1. Install **JDK 17+** and **Maven** (macOS: `brew install openjdk@17 maven`).
+1. Install **JDK 17+** (works with 17–25) and **Maven** (macOS: `brew install openjdk@17 maven`).
 2. In VS Code install the *Extension Pack for Java* and *Spring Boot Extension Pack* (VS Code will suggest them).
 3. Open this folder (`File → Open Folder…`).
 4. Run it either way:
@@ -50,6 +70,7 @@ Example body for POST/PUT:
 ```
 sales-dashboard/
 ├── pom.xml
+├── docs/                        # README screenshots
 ├── .vscode/                     # launch + recommended extensions
 └── src/main/
     ├── java/com/ranbir/salesdashboard/
